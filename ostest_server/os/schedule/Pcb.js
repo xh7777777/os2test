@@ -7,8 +7,19 @@ function Pcb({pid,priority,timeSlice}){
     this.state = 'W';                      //进程状态
     this.next = null;                     // 链上的下一个进程
     this.pre = null;                     // 链上的前一个进程
-    this.ldt = undefined;                     //段表指针
-    this.pageTable = undefined;               //页表指针
+    this.ldt;                   //段表指针
+    this.pageTable;               //页表指针
+}
+
+Pcb.prototype.init = function(){       //随机生成一个初始化pcb配置项,用于实验
+    let createNum = (left,right)=>{
+        return Math.floor(Math.random()*right+left);
+    }
+    return {
+        pid:createNum(0.1000),
+        priority:createNum(0,1000),
+        timeSlice:createNum(0,1000)
+    }
 }
 
 module.exports = Pcb;
