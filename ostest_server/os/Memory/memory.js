@@ -2,8 +2,8 @@ class memoryManage{
     constructor(){
         this.space = []          //虚存数组 
         this.pageSize            //页大小
-        this.volume              //容量
-        this.stack             //用于LRU算法
+        this.volume              //虚存容量
+        this.stack               //用于LRU算法
     }
     resetSpace(){
         this.space = [];

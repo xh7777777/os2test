@@ -2,6 +2,8 @@ const Router = require('@koa/router')
 const router = new Router();
 const Memory = require("../os/Memory/memory")
 const MyProcess = require("../os/Memory/myProcess")
+const LruCache = require("../os/Memory/lruCache")
+
 router.prefix('/memory')
 const myProcess = new MyProcess();
 const memory = new Memory();
@@ -40,6 +42,18 @@ router.get("/LRU",(ctx,next) => {
             ok: '0',
             message: '页面尺寸太大或未传'
         }
+    }
+})
+
+router.get("/test",(ctx,next) => {
+    let lruCache = new LruCache(30);
+    lruCache.append(1,1);
+    lruCache.append(2,2);
+    lruCache.append(3,3)
+    lruCache.append(4,4)
+    let res = lruCache.test();
+    ctx.body={
+        res
     }
 })
 

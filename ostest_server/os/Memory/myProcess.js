@@ -7,7 +7,7 @@ class myProcess{
         this.address = [];      //逻辑地址
     }
     generateOrderSequence(){           //生成随机指令序列及页表datasg  0 - 4000  codesg  8001 - 32767
-        let st = Math.floor(Math.random()*10000+8000);
+        let st = Math.floor(Math.random()*20000+8000);
         function ranSegment(){
             let i = Math.floor(Math.random()*3);
             switch(i){
@@ -24,7 +24,8 @@ class myProcess{
             }
         }
         for(let i = 0;i< 256;i++){
-            i % 2 !== 0 ? this.order.push(st++) : this.order.push(ranSegment()); 
+            if(st>=32767)st-=10000;
+            i % 2 !== 0 ? this.order.push(st+=100) : this.order.push(ranSegment()); 
         }                          
     }
     processInit(pageSize){                     //初始化pcb，获取地址，页表指针
