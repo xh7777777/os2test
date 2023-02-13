@@ -1,1 +1,4 @@
-## 一个伟大的操作系统项目
+## npm install
+## cd ostest_server 
+## node os-server
+## client端 npm run dev
